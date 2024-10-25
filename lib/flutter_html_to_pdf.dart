@@ -14,7 +14,7 @@ class FlutterHtmlToPdf {
     final temporaryCreatedHtmlFile = await FileUtils.createFileWithStringContent(htmlContent, "$targetDirectory/$targetName.html");
     final generatedPdfFilePath = await _convertFromHtmlFilePath(temporaryCreatedHtmlFile.path);
     final generatedPdfFile = FileUtils.copyAndDeleteOriginalFile(generatedPdfFilePath, targetDirectory, targetName);
-    temporaryCreatedHtmlFile.delete();
+    await temporaryCreatedHtmlFile.delete();
 
     return generatedPdfFile;
   }
